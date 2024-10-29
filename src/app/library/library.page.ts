@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
+import { SoundService } from '../services/sound.service';
 
 @Component({
   selector: 'app-library',
@@ -28,8 +29,9 @@ export class LibraryPage implements OnInit {
   selectedCategory = '';
 
   constructor(
-    private alertController: AlertController, 
+    private alertController: AlertController,
     private userService: UserService,
+    private soundService: SoundService, // Inyecta el servicio de sonido
     public navCtrl: NavController // Inyección de NavController
   ) {}
 
@@ -63,7 +65,7 @@ export class LibraryPage implements OnInit {
     }
   }
 
-   // Método para navegar al perfil
+  // Método para navegar al perfil
   goToProfile() {
     this.navCtrl.navigateForward('/profile'); // Cambia a la ruta de perfil
   }
@@ -83,5 +85,4 @@ export class LibraryPage implements OnInit {
   openExternalLink(link: string) {
     window.open(link, '_blank'); // Abre la página externa en una nueva pestaña
   }
-  
 }

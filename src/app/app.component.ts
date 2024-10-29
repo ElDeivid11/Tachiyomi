@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SoundService } from './services/sound.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor() {
-    // Puedes realizar otras inicializaciones aquí si es necesario
+  constructor(private soundService: SoundService) {
+    this.soundService.playBackgroundMusic();
   }
 
   ngOnInit() {
     const savedTheme = localStorage.getItem('selectedTheme') || '';
     if (savedTheme) {
       this.changeTheme(savedTheme); // Llama a la función changeTheme
+      this.soundService.playBackgroundMusic(); // Llama a la función para re
     }
   }
 
