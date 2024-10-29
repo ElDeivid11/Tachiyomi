@@ -1,0 +1,81 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+}
+
+.page-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/img/JJKB.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.page-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(139, 0, 0, 0.6); /* Rojo oscuro con opacidad */
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-icon {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-card, .register-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+ion-item {
+  margin-bottom: 1rem;
+}
+
+ion-button {
+  --border-radius: 8px;
+  margin-top: 1rem;
+}

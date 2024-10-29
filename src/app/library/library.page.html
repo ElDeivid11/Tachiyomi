@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tachiyomi</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="navCtrl.navigateForward('/favorites')">
+        <ion-icon name="heart-outline"></ion-icon> <!-- Icono de corazón para favoritos -->
+      </ion-button>
+      <ion-button (click)="goToProfile()"></ion-button>
+        <ion-icon name="person-circle-outline"></ion-icon> <!-- Ícono de perfil -->
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de categorías -->
+  <ion-segment (ionChange)="onCategoryChange($event)">
+    <ion-segment-button value="Manga">
+      <ion-label>Manga</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Manhua">
+      <ion-label>Manhua</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Light Novel">
+      <ion-label>Light Novel</ion-label>
+    </ion-segment-button>
+    <!-- Agrega más categorías según necesites -->
+  </ion-segment>
+
+  <!-- Cuadrícula de libros -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" *ngFor="let book of filteredBooks">
+        <ion-card (click)="openExternalLink(book.link)">
+          <img [src]="book.cover" alt="Cover of {{ book.title }}" />
+          <ion-card-header>
+            <ion-card-title>{{ book.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-button fill="clear" (click)="addToFavorites(book.title); $event.stopPropagation();">Agregar a Favoritos</ion-button>
+        </ion-card>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+  

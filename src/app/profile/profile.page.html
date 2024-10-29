@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil de Usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/library"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-container">
+    <img [src]="user.avatarUrl" alt="Avatar" class="profile-avatar" /> <!-- Cambié la clase aquí -->
+    <input type="file" (change)="changeAvatar($event)" accept="image/*" style="display: none;" #fileInput />
+    <ion-button (click)="fileInput.click()">Seleccionar Archivo</ion-button>
+
+  </div>
+
+
+
+  <ion-item>
+    <ion-label>Nombre de Usuario: {{ user.username }}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Correo Electrónico: {{ user.email }}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Biografía: {{ user.bio }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" (click)="editProfile()">Editar Perfil</ion-button>
+
+
+ <!-- Input oculto para seleccionar el archivo de imagen -->
+ <input type="file" #fileInput (change)="changeAvatar($event)" accept="image/*" style="display: none;" />
+
+
+
+<ion-segment (ionChange)="onThemeChange($event)">
+  <ion-segment-button value="dark-theme">
+    <ion-label>Tema Oscuro</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="anime-theme">
+    <ion-label>Tema Principal</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+</ion-content>

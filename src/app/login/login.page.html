@@ -1,0 +1,25 @@
+<ion-content class="page-background">
+  <div class="container">
+    <!-- Icono de perfil -->
+    <div class="icon-container">
+      <ion-avatar class="profile-icon">
+        <img src="assets/icon/IconManga.jpg" alt="Foto de perfil">
+      </ion-avatar>
+    </div>
+
+    <!-- Tarjeta de login centrada -->
+    <ion-card class="login-card">
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item><ion-button expand="block" (click)="onLogin()" color="primary" class="animated-button">
+        Ingresar
+      </ion-button>
+      <ion-button expand="block" fill="clear" routerLink="/register">Crear cuenta</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

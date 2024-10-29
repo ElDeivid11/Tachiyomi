@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/library"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Libros Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="favoriteBooks.length > 0; else noFavorites">
+    <ion-item *ngFor="let book of favoriteBooks" (click)="openExternalLink(book.link)"> <!-- Cambiar aquí -->
+      <ion-thumbnail slot="start">
+        <img [src]="book.cover" alt="{{ book.title }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ book.title }}</h2>
+        <p>{{ book.category }}</p>
+      </ion-label>
+      <ion-button color="danger" slot="end" (click)="removeFavorite(book.title)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noFavorites>
+    <ion-label>No hay libros favoritos.</ion-label>
+  </ng-template>
+</ion-content>

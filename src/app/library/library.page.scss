@@ -1,0 +1,31 @@
+ion-card {
+    img {
+    width: 100%;
+    height: auto;
+    }
+    ion-card-header {
+    text-align: center;
+    }
+}
+
+ion-segment-button {
+    --color-checked: #f39c12; // Cambia el color de la categoría seleccionada
+}
+/* styles/variables.css */
+:root {
+    --primary-color: #3880ff;
+    --background-color: #ffffff;
+  }
+  
+  /* Tema Oscuro */
+  .dark-theme {
+    --primary-color: #bb86fc;
+    --background-color: #121212;
+  }
+  
+  /* Tema Anime */
+  .anime-theme {
+    --primary-color: #ff4081;
+    --background-color: #fce4ec;
+  }
+  
