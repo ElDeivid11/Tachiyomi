@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 // Definición de la interfaz Book
 interface Book {
@@ -17,7 +18,10 @@ interface Book {
 export class FavoritesPage implements OnInit {
   favoriteBooks: Book[] = []; // Arreglo de libros favoritos de tipo Book
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.loadFavoriteBooks();

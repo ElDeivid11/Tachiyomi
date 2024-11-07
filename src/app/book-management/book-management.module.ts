@@ -4,18 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core'; // Asegúrate de importar TranslateModule
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { BookManagementPageRoutingModule } from './book-management-routing.module';
 
-import { ProfilePage } from './profile.page';
+import { BookManagementPage } from './book-management.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    TranslateModule,
     IonicModule,
-    ProfilePageRoutingModule
+    BookManagementPageRoutingModule,
+    TranslateModule 
   ],
-  declarations: [ProfilePage]
+  declarations: [BookManagementPage]
 })
-export class ProfilePageModule {}
+export class BookManagementPageModule {}

@@ -2,11 +2,17 @@
   <ion-toolbar color="primary">
     <ion-title>Tachiyomi</ion-title>
     <ion-buttons slot="end">
+      <ion-button (click)="goToAddBook()"></ion-button>
+      <ion-icon name="book-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end">
       <ion-button (click)="navCtrl.navigateForward('/favorites')">
         <ion-icon name="heart-outline"></ion-icon> <!-- Icono de corazón para favoritos -->
       </ion-button>
-      <ion-button (click)="goToProfile()"></ion-button>
+      
+      <ion-button (click)="goToProfile()">
         <ion-icon name="person-circle-outline"></ion-icon> <!-- Ícono de perfil -->
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,13 +21,13 @@
   <!-- Barra de categorías -->
   <ion-segment (ionChange)="onCategoryChange($event)">
     <ion-segment-button value="Manga">
-      <ion-label>Manga</ion-label>
+      <ion-label>{{ 'CATEGORY.MANGA' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button value="Manhua">
-      <ion-label>Manhua</ion-label>
+      <ion-label>{{ 'CATEGORY.MANHUA' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button value="Light Novel">
-      <ion-label>Light Novel</ion-label>
+      <ion-label>{{ 'CATEGORY.LIGHT_NOVEL' | translate }}</ion-label>
     </ion-segment-button>
     <!-- Agrega más categorías según necesites -->
   </ion-segment>
@@ -35,10 +41,14 @@
           <ion-card-header>
             <ion-card-title>{{ book.title }}</ion-card-title>
           </ion-card-header>
-          <ion-button fill="clear" (click)="addToFavorites(book.title); $event.stopPropagation();">Agregar a Favoritos</ion-button>
+          <ion-button fill="clear" (click)="addToFavorites(book.title); $event.stopPropagation();">
+            {{ 'ADD_TO_FAVORITES' | translate }}
+          </ion-button>
+           <ion-button color="danger" (click)="deleteBook(book.id)">
+        Eliminar
+      </ion-button>
         </ion-card>
       </ion-col>
-      
     </ion-row>
   </ion-grid>
-  
+</ion-content>

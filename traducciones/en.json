@@ -1,0 +1,48 @@
+{
+    "CATEGORY": {
+      "MANGA": "Manga",
+      "MANHUA": "Manhua",
+      "LIGHT_NOVEL": "Light Novel"
+    },
+    "ADD_TO_FAVORITES": "Add to Favorites",
+    "WELCOME": "Welcome",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REGISTER_BUTTON": "Register",
+    "LOGIN_BUTTON": "Login",
+    "USERNAME": "Username",
+    "CREATE_ACCOUNT": "Create Account",
+    "DELETE":"DELETE",
+    "LANGUAGE": {
+        "ENGLISH": "English",
+        "SPANISH": "Spanish"
+      },
+
+      
+        "PROFILE": "Profile",
+        "SELECT_FILE": "Select File",
+        
+        "BIO": "Biography",
+        "EDIT_PROFILE": "Edit Profile",
+        "DARK_THEME": "Dark Theme",
+        "MAIN_THEME": "Main Theme",
+      
+        
+        "FAVORITE_BOOKS": "Favorite Books",
+         "REMOVE": "Remove",
+         "NO_FAVORITES": "No favorite books available."
+          }
+          
+    
+    
+    
+    
+    
+    
+    
+
+      
+  
+
+  
+  

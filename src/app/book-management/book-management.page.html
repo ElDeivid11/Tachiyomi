@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ isEditing ? 'Editar Libro' : 'Agregar Libro' }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/library"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Título</ion-label>
+    <ion-input [(ngModel)]="book.title" placeholder="Título del libro"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Categoría</ion-label>
+    <ion-select [(ngModel)]="book.category">
+      <ion-select-option value="Manga">Manga</ion-select-option>
+      <ion-select-option value="Manhua">Manhua</ion-select-option>
+      <ion-select-option value="Light Novel">Light Novel</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Link</ion-label>
+    <ion-input [(ngModel)]="book.link" placeholder="URL del libro"></ion-input>
+  </ion-item>
+
+  <!-- Selector de imagen -->
+  <ion-item>
+    <ion-label position="stacked">URL de la portada</ion-label>
+    <ion-input [(ngModel)]="book.cover" placeholder="URL de la imagen de portada"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="saveBook()">
+    {{ isEditing ? 'Guardar Cambios' : 'Agregar Libro' }}
+  </ion-button>
+</ion-content>

@@ -1,0 +1,95 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Mushoku Tensei",
+      "cover": "assets/img/MushokuTensei.jpg",
+      "category": "Manga",
+      "link": "https://zonatmo.com/library/manga/8635/mushokutenseiisekaiittarahonkidasu"
+    },
+    {
+      "id": "2",
+      "title": "Boku No Hero",
+      "cover": "assets/img/BokuNoHero.jpg",
+      "category": "Manga",
+      "link": "https://zonatmo.com/library/manga/127/bokunoheroacademia"
+    },
+    {
+      "id": "3",
+      "title": "Re:Zero",
+      "cover": "assets/img/ReZero.jpg",
+      "category": "Manga",
+      "link": "https://zonatmo.com/library/manga/46255/rezero-kara-hajimeru-isekai-seikatsu-dai-4-shou-seiiki-to-gouyoku-no-majo"
+    },
+    {
+      "id": "4",
+      "title": "Chainsaw Man",
+      "cover": "assets/img/ChainsawMan.jpg",
+      "category": "Manga",
+      "link": "https://zonatmo.com/library/manga/336/chainsawman"
+    },
+    {
+      "id": "5",
+      "title": "Martial Peak",
+      "cover": "assets/img/MartialPeak.jpg",
+      "category": "Manhua",
+      "link": "https://zonatmo.com/library/manhua/38921/martial-peak"
+    },
+    {
+      "id": "6",
+      "title": "Release That Witch",
+      "cover": "assets/img/ReleaseThatWitch.jpg",
+      "category": "Manhua",
+      "link": "https://zonatmo.com/library/manhua/42786/release-that-witch"
+    },
+    {
+      "id": "7",
+      "title": "Tales Of Demons And Gods",
+      "cover": "assets/img/TalesOfDemonsAndGods.jpg",
+      "category": "Manhua",
+      "link": "https://zonatmo.com/library/manhua/12956/tales-of-demons-and-gods"
+    },
+    {
+      "id": "8",
+      "title": "Solo Leveling",
+      "cover": "assets/img/SoloLeveling.jpg",
+      "category": "Manhua",
+      "link": "https://zonatmo.com/library/manhwa/217/solo-leveling"
+    },
+    {
+      "id": "9",
+      "title": "La Vida Despues De La Muerte",
+      "cover": "assets/img/LVDM.jpg",
+      "category": "Light Novel",
+      "link": "https://zonatmo.com/library/novel/41401/la-vida-despues-de-la-muerte"
+    },
+    {
+      "id": "10",
+      "title": "Bungou Stray Dogs",
+      "cover": "assets/img/BungouStrayDogs.jpg",
+      "category": "Light Novel",
+      "link": "https://zonatmo.com/library/novel/31238/Bungou-Stray-Dogs-Examen-"
+    },
+    {
+      "id": "11",
+      "title": "Tate No Yuushano",
+      "cover": "assets/img/TatenoYuushanoNariagari.jpg",
+      "category": "Light Novel",
+      "link": "https://zonatmo.com/library/novel/10196/tatenoyuushanonariagari"
+    },
+    {
+      "id": "12",
+      "title": "The Great Demon King",
+      "cover": "assets/img/TheGreatDemonKing.jpg",
+      "category": "Light Novel",
+      "link": "https://zonatmo.com/library/novel/22859/great-demon-king"
+    },
+    {
+      "id": "9f16",
+      "title": "Solo puto",
+      "cover": "https://otakuteca.com/images/books/cover/6102d1eaad144.webp",
+      "category": "Manhua",
+      "link": "https://zonatmo.com/library/manhwa/363/novatosoloanivelmaximo"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -14,7 +15,15 @@ export class RegisterPage {
   email: string = ''; // Inicializa con una cadena vacía
   password: string = ''; // Inicializa con una cadena vacía
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService, 
+    private translate: TranslateService,
+    private router: Router) {}
+
+
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
 
   async onRegister() {
     const user = {

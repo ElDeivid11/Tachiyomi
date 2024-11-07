@@ -3,23 +3,39 @@
     <!-- Icono de perfil -->
     <div class="icon-container">
       <ion-avatar class="profile-icon">
-        <img src="assets/icon/IconManga.jpg" alt="Foto de perfil">
+        <img src="assets/icon/IconManga.jpg" alt="{{ 'PROFILE_PICTURE_ALT' | translate }}">
       </ion-avatar>
+    </div>
+
+    <!-- Título de bienvenida -->
+    <h1>{{ 'WELCOME' | translate }}</h1>
+
+    <!-- Botón para cambiar idioma en la esquina -->
+    <div class="language-switcher">
+      <button (click)="changeLanguage('en')" class="language-button">{{ 'LANGUAGE.ENGLISH' | translate }}</button>
+      <button (click)="changeLanguage('es')" class="language-button">{{ 'LANGUAGE.SPANISH' | translate }}</button>
     </div>
 
     <!-- Tarjeta de login centrada -->
     <ion-card class="login-card">
       <ion-item>
-        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-label position="floating">{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
+        <ion-label position="floating">{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item><ion-button expand="block" (click)="onLogin()" color="primary" class="animated-button">
-        Ingresar
+      </ion-item>
+      
+      <!-- Botón de inicio de sesión -->
+      <ion-button expand="block" (click)="onLogin()" color="primary" class="animated-button">
+        {{ 'LOGIN_BUTTON' | translate }}
       </ion-button>
-      <ion-button expand="block" fill="clear" routerLink="/register">Crear cuenta</ion-button>
+      
+      <!-- Botón para crear cuenta -->
+      <ion-button expand="block" fill="clear" routerLink="/register">
+        {{ 'CREATE_ACCOUNT' | translate }}
+      </ion-button>
     </ion-card>
   </div>
 </ion-content>

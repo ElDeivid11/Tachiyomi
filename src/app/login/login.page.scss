@@ -48,6 +48,35 @@ ion-content {
   border-radius: 50%;
   padding: 2px;
 }
+.language-switcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.language-button {
+  background-color: #e30606; /* Un color azul atractivo */
+  color: white;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.language-button:hover {
+  background-color: #890303; /* Cambia a un azul más oscuro al pasar el ratón */
+}
+
+.language-button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 58, 58, 0.5);
+}
+
 
 h1 {
   font-size: 2rem;

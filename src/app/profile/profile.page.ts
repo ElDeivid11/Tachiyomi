@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private userService: UserService, // Servicio que proporciona la información del usuario
-    private alertController: AlertController // Controlador de alertas para edición de perfil
+    private alertController: AlertController, // Controlador de alertas para edición de perfil
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -27,8 +29,8 @@ export class ProfilePage implements OnInit {
 
   // Cargar la información del usuario
   loadUserProfile() {
-   
-    this.user.email = 'usuario@example.com'; // Se puede reemplazar por un método en `userService` si deseas obtener el correo almacenado
+
+    this.user.email = ''; // Se puede reemplazar por un método en `userService` si deseas obtener el correo almacenado
     this.user.bio = 'Escribe algo sobre ti...'; // Valor de ejemplo para la bio, ajustable según tu servicio
     
     // Cargar la imagen de perfil desde localStorage
@@ -85,6 +87,11 @@ export class ProfilePage implements OnInit {
       reader.readAsDataURL(fileInput.files[0]); // Leer la imagen como Data URL
     }
   }
+
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
+
 
   changeTheme(theme: string | undefined) {
     if (!theme) {

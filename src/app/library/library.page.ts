@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
 import { SoundService } from '../services/sound.service';
+import { TranslateService } from '@ngx-translate/core';
+import { BookService, Book } from '../services/book.service';
 
 @Component({
   selector: 'app-library',
@@ -9,70 +11,113 @@ import { SoundService } from '../services/sound.service';
   styleUrls: ['./library.page.scss'],
 })
 export class LibraryPage implements OnInit {
-  books = [
-    { title: 'Mushoku Tensei', cover: 'assets/img/MushokuTensei.jpg', category: 'Manga', link: 'https://zonatmo.com/library/manga/8635/mushokutenseiisekaiittarahonkidasu' },
-    { title: 'Boku No Hero', cover: 'assets/img/BokuNoHero.jpg', category: 'Manga', link: 'https://zonatmo.com/library/manga/127/bokunoheroacademia' },
-    { title: 'Re:Zero', cover: 'assets/img/ReZero.jpg', category: 'Manga', link: 'https://zonatmo.com/library/manga/46255/rezero-kara-hajimeru-isekai-seikatsu-dai-4-shou-seiiki-to-gouyoku-no-majo' },
-    { title: 'Chainsaw Man', cover: 'assets/img/ChainsawMan.jpg', category: 'Manga', link: 'https://zonatmo.com/library/manga/336/chainsawman' },
-    { title: 'Martial Peak', cover: 'assets/img/MartialPeak.jpg', category: 'Manhua', link: 'https://zonatmo.com/library/manhua/38921/martial-peak' },
-    { title: 'Release That Witch', cover: 'assets/img/ReleaseThatWitch.jpg', category: 'Manhua', link: 'https://zonatmo.com/library/manhua/42786/release-that-witch' },
-    { title: 'Tales Of Demons And Gods', cover: 'assets/img/TalesOfDemonsAndGods.jpg', category: 'Manhua', link: 'https://zonatmo.com/library/manhua/12956/tales-of-demons-and-gods' },
-    { title: 'Solo Leveling', cover: 'assets/img/SoloLeveling.jpg', category: 'Manhua', link: 'https://zonatmo.com/library/manhwa/217/solo-leveling' },
-    { title: 'La Vida Despues De La Muerte', cover: 'assets/img/LVDM.jpg', category: 'Light Novel', link: 'https://zonatmo.com/library/novel/41401/la-vida-despues-de-la-muerte' },
-    { title: 'Bungou Stray Dogs', cover: 'assets/img/BungouStrayDogs.jpg', category: 'Light Novel', link: 'https://zonatmo.com/library/novel/31238/Bungou-Stray-Dogs-Examen-' },
-    { title: 'Tate No Yuushano', cover: 'assets/img/TatenoYuushanoNariagari.jpg', category: 'Light Novel', link: 'https://zonatmo.com/library/novel/10196/tatenoyuushanonariagari' },
-    { title: 'The Great Demon King', cover: 'assets/img/TheGreatDemonKing.jpg', category: 'Light Novel', link: 'https://zonatmo.com/library/novel/22859/great-demon-king' },
-    // Agrega más libros según necesites
-  ];
-
-  filteredBooks = [...this.books];
-  selectedCategory = '';
+  books: Book[] = [];
+  filteredBooks: Book[] = [];
+  selectedCategory = ''
+  newBook: Book = {  // Inicializa el objeto newBook
+    id: 0,  // Si tienes un ID único, ajusta esto según sea necesario
+    title: '',
+    cover: '',
+    category: '',
+    link: ''
+  };;
 
   constructor(
     private alertController: AlertController,
+    private bookService: BookService,
     private userService: UserService,
-    private soundService: SoundService, // Inyecta el servicio de sonido
-    public navCtrl: NavController // Inyección de NavController
+    private translate: TranslateService,
+    private soundService: SoundService,
+    public navCtrl: NavController
   ) {}
 
   ngOnInit() {
-    this.filterBooks(); // Filtra los libros al iniciar
+    this.showWelcomeMessage();
+    this.loadBooks();
   }
 
-  async ionViewDidEnter() {
-    const username = this.userService.getUsername();
-
-    const alert = await this.alertController.create({
-      header: 'Bienvenido',
-      message: `¡Hola, ${username}!`,
-      buttons: ['OK']
-    });
-
-    await alert.present();
+  async showWelcomeMessage() {
+    const alreadyWelcomed = localStorage.getItem('welcomeShown');
+    if (!alreadyWelcomed) {
+      this.userService.getUserData('user-id').subscribe(async (userData) => {
+        const username = userData?.username || 'Usuario';
+        const alert = await this.alertController.create({
+          header: this.translate.instant('WELCOME'),
+          message: `${this.translate.instant('HELLO')}, ${username}!`,
+          buttons: ['OK']
+        });
+        await alert.present();
+        localStorage.setItem('welcomeShown', 'true');
+      });
+    }
   }
 
   onCategoryChange(event: any) {
     this.selectedCategory = event.detail.value;
-    this.filterBooks(); // Llama a filterBooks para actualizar filteredBooks
+    this.filterBooks();
   }
 
   filterBooks() {
-    // Filtra la lista de libros según la categoría seleccionada
-    if (this.selectedCategory) {
-      this.filteredBooks = this.books.filter(book => book.category === this.selectedCategory);
+    this.filteredBooks = this.selectedCategory
+      ? this.books.filter(book => book.category === this.selectedCategory)
+      : [...this.books];
+  }
+
+  goToProfile() {
+    this.navCtrl.navigateForward('/profile');
+  }
+
+  loadBooks() {
+    this.bookService.getBooks().subscribe((books: Book[]) => {
+      this.books = books;
+      this.filteredBooks = books;  // Puedes agregar filtrado aquí si lo deseas
+    });
+  }
+
+addBook() {
+    if (this.newBook.title && this.newBook.category && this.newBook.link) {
+      this.bookService.addBook(this.newBook).subscribe(newBook => {
+        this.books.push(newBook);  // Agregar el libro a la lista de libros en tiempo real
+        this.filteredBooks.push(newBook); // Si estás filtrando, también actualiza la lista filtrada
+        this.newBook = { id: 0, title: '', cover: '', category: '', link: '' };  // Limpiar el formulario
+      });
     } else {
-      this.filteredBooks = [...this.books]; // Muestra todos los libros si no hay categoría seleccionada
+      // Aquí puedes agregar un mensaje de error si faltan campos en el formulario
+      console.error('Faltan campos en el libro');
     }
   }
 
-  // Método para navegar al perfil
-  goToProfile() {
-    this.navCtrl.navigateForward('/profile'); // Cambia a la ruta de perfil
+  updateBook(bookId: number, updatedBook: Book) {
+    this.bookService.updateBook(bookId, updatedBook).subscribe((book) => {
+      const index = this.books.findIndex((b) => b.id === bookId);
+      if (index > -1) {
+        this.books[index] = book;
+        this.filterBooks();
+      }
+    });
   }
+
+ 
+
+  goToAddBook() {
+    this.navCtrl.navigateForward('/book-management');
+  }
+
+  editBook(book: Book) {
+    this.navCtrl.navigateForward('/book-management', {
+      state: { book }
+    });
+  }
+  deleteBook(bookId: number) {
+    this.bookService.deleteBook(bookId).subscribe(() => {
+      // Filtra los libros eliminando el que tiene el id igual al bookId
+      this.books = this.books.filter(book => book.id !== bookId);
+    });
+  }
+  
 
   addToFavorites(bookTitle: string) {
     let favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks') || '[]');
-
     if (!favoriteBooks.includes(bookTitle)) {
       favoriteBooks.push(bookTitle);
       localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
@@ -82,7 +127,11 @@ export class LibraryPage implements OnInit {
     }
   }
 
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
+
   openExternalLink(link: string) {
-    window.open(link, '_blank'); // Abre la página externa en una nueva pestaña
+    window.open(link, '_blank');
   }
 }

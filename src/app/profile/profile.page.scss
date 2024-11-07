@@ -14,6 +14,18 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra (opcional) */
 }
 
+.language-button-container {
+  display: flex;
+  justify-content: center;  /* Centra los botones horizontalmente */
+  margin-top: 30px; /* Espaciado desde el contenido anterior */
+}
+
+.language-button {
+  margin: 10px;  /* Espaciado entre los botones */
+  width: 40%; /* Ajusta el tamaño del botón */
+}
+
+
 ion-button {
     margin-top: 10px; /* Espaciado entre botones */
     --background: #3880ff; /* Color de fondo del botón */

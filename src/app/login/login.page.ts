@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { ToastController } from '@ionic/angular'; // Importa ToastController para mostrar notificaciones
 import { User } from '../models/user.model'; // Asegúrate de importar el modelo de usuario
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginPage {
     private loadingController: LoadingController, // Inyectar LoadingController
     private userService: UserService, // Inyectar UserService
     private apiService: ApiService,
+    private translate: TranslateService,
     private toastController: ToastController // Importa ToastController para mostrar notificaciones
 
   ) {}
@@ -51,6 +53,9 @@ export class LoginPage {
     toast.present();
   }
 
+  changeLanguage(language: string) {
+    this.translate.use(language);
+  }
 
   goToRegister() {
     this.navCtrl.navigateForward('/register'); // Navegar a la página de registro

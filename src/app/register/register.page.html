@@ -1,27 +1,35 @@
-<!-- src/app/register/register.page.html -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>Registro</ion-title>
+    <ion-title>{{ 'REGISTER' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="onRegister()">
-    <ion-item>
-      <ion-label position="floating">Nombre de usuario</ion-label>
-      <ion-input [(ngModel)]="username" name="username" required></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
-    </ion-item>
+  <div class="container">
+    <!-- Botón para cambiar idioma en la esquina -->
+    <div class="language-switcher">
+      <button (click)="changeLanguage('en')" class="language-button">{{ 'LANGUAGE.ENGLISH' | translate }}</button>
+      <button (click)="changeLanguage('es')" class="language-button">{{ 'LANGUAGE.SPANISH' | translate }}</button>
+    </div>
 
-    <ion-button expand="full" type="submit">Registrarse</ion-button>
-  </form>
+    <!-- Formulario de registro -->
+    <form (ngSubmit)="onRegister()">
+      <ion-item>
+        <ion-label position="floating">{{ 'USERNAME' | translate }}</ion-label>
+        <ion-input [(ngModel)]="username" name="username" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="full" type="submit">{{ 'REGISTER_BUTTON' | translate }}</ion-button>
+    </form>
+  </div>
 </ion-content>
